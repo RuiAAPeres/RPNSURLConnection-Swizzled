@@ -24,7 +24,7 @@ static BOOL shouldUseStackTrace;
 
 #pragma mark - Util methods
 
-void swizzClass(Class class, SEL originalSel, SEL newSel)
+static void swizzClass(Class class, SEL originalSel, SEL newSel)
 {
     Method origMethod = class_getClassMethod(class, originalSel);
     Method newMethod = class_getClassMethod(class, newSel);
@@ -32,7 +32,7 @@ void swizzClass(Class class, SEL originalSel, SEL newSel)
     method_exchangeImplementations(origMethod, newMethod);
 }
 
-void swizzInstance(Class class, SEL originalSel, SEL newSel)
+static void swizzInstance(Class class, SEL originalSel, SEL newSel)
 {
     Method origMethod = class_getInstanceMethod(class, originalSel);
     Method newMethod = class_getInstanceMethod(class, newSel);
@@ -92,7 +92,7 @@ void swizzInstance(Class class, SEL originalSel, SEL newSel)
         // Output it
         NSLog(@"%@", finalString);
     }
-    NSLog(@"----------------------------------------------------------------------------");
+ NSLog(@"----------------------------------------------------------------------------");
 }
 
 + (void)operateRequest:(NSURLRequest*)request
