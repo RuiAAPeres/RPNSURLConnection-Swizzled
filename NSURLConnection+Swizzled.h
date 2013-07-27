@@ -1,13 +1,13 @@
 //
 //  NSURLConnection+Swizzled.h
-//  Testing
 //
 //  Created by Rui Peres on 27/07/13.
-//  Copyright (c) 2013 Aphely. All rights reserved.
+//  Copyright (c) 2013 Rui Peres. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
+#define STOP_STACKTRACE_SWIZZ [NSURLConnection stopStackTrace];
 #define SWIZZ_IT [NSURLConnection swizzIt];
 #define UN_SWIZZ_IT [NSURLConnection undoSwizz];
 
@@ -37,5 +37,11 @@
  @return void
  */
 + (void)undoSwizz;
+
+/**
+ It will stop outputing the stacktrace information
+ @return void
+ */
++ (void)stopStackTrace;
 
 @end

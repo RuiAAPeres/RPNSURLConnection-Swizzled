@@ -1,9 +1,8 @@
 //
 //  NSURLConnection+Swizzled.m
-//  Testing
 //
 //  Created by Rui Peres on 27/07/13.
-//  Copyright (c) 2013 Aphely. All rights reserved.
+//  Copyright (c) 2013 Rui Peres. All rights reserved.
 //
 
 #import "NSURLConnection+Swizzled.h"
@@ -13,10 +12,14 @@
 
 // Poor's man flag. Used to know if the methods are already Swizzed
 static BOOL isSwizzed;
+// Flag to know if the output of the stacktrace should be used. By default YES
+static BOOL shouldUseStackTrace;
+
 
 +(void)load
 {
     isSwizzed = NO;
+    shouldUseStackTrace = YES;
 }
 
 #pragma mark - Util methods
@@ -95,10 +98,13 @@ void swizzInstance(Class class, SEL originalSel, SEL newSel)
 + (void)operateRequest:(NSURLRequest*)request
 {
     
-    //NSLog(@"%@",[NSThread callStackSymbols]); // If you are not happy with the modifications, uncoment this line
-    //and comment the bellow    
-    [NSURLConnection outputStackTrace];
-
+    if (shouldUseStackTrace)
+    {
+        //NSLog(@"%@",[NSThread callStackSymbols]); // If you are not happy with the modifications, uncoment this line
+        //and comment the bellow
+        [NSURLConnection outputStackTrace];
+    }
+    
     // Log the curl info
     NSLog(@"%@",[NSURLConnection logInfoWithRequest:request]);
 }
@@ -117,10 +123,16 @@ void swizzInstance(Class class, SEL originalSel, SEL newSel)
 {
     [NSURLConnection operateRequest:request];
     // Call the original method
-   return  [self initWithRequest:request delegate:delegate startImmediately:startImmediately];
+    return  [self initWithRequest:request delegate:delegate startImmediately:startImmediately];
 }
 
 #pragma mark - Public methods
+
++ (void)stopStackTrace
+{
+    shouldUseStackTrace = NO;
+}
+
 
 + (void)swizzIt
 {
@@ -153,8 +165,5 @@ void swizzInstance(Class class, SEL originalSel, SEL newSel)
     // Secondly we take care about the sendAsynchronousRequest:queue:completionHandler: (notice that it's a class method)
     swizzClass([self class],@selector(swizzSendAsynchronousRequest:queue:completionHandler:),@selector(sendAsynchronousRequest:queue:completionHandler:));
 }
-
-
-
 
 @end

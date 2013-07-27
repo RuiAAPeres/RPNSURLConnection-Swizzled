@@ -79,6 +79,7 @@ Request
 -------
 curl -X GET 'www.google.com'
 ```
+if you are not happy with the stack trace just don't use it: `STOP_STACKTRACE_SWIZZ`.
 
 If you want to keep receiving information during the whole application just `SWIZZ_IT` on your `applicationDidFinishLaunching` and don't use `UN_SWIZZ_IT`.
 
