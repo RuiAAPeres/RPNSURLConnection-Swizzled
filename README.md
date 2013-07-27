@@ -4,6 +4,8 @@ NSURLConnection+Swizzled
 
 Category used to "log curl command line prompts for debugging purposes". This category was inspired on NSMutableURLRequest+MKCurlAdditions from [Mugunth Kumar](https://twitter.com/mugunthkumar), you can find it [here](https://github.com/MugunthKumar/CurlNSMutableURLRequestDemo). It will also print the stacktrace so you can understand from where the calls are coming from.
 
+This is useful to understand what kind of calls, and how, for example, your urls are being created.
+
 **Don't forget to disable it in production code. This is only for debugging**
 
 ------------
