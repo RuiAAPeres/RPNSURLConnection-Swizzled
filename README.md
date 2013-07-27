@@ -31,13 +31,13 @@ Usage
 Before making a remote connection you can call `SWIZZ_IT` and after you are done with it `UN_SWIZZ_IT`. For example:
 
 ```objective-c
-    SWIZZ_IT
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"www.google.com"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *as, NSData *a, NSError *ads)
-    {
-        NSLog(@"blah blah");
-    }];
+SWIZZ_IT
+[NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"www.google.com"]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *as, NSData *a, NSError *ads)
+{
+   NSLog(@"blah blah");
+}];
     
-    UN_SWIZZ_IT
+UN_SWIZZ_IT
 ```
 
 This will output:
