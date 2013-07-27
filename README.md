@@ -16,7 +16,7 @@ Include the library:
 
 And import the category where you want to use it:
 
-* #import "NSURLConnection+Swizzled.h"
+* `#import "NSURLConnection+Swizzled.h"`
 
 ------------------------------------
 Adding NSURLConnection+Swizzled to your project
@@ -28,7 +28,9 @@ Just add the two files inside your project (`NSURLConnection+Swizzled.h` and `NS
 Usage
 =====
 
-Before a call you can call `SWIZZ_IT` and after you are done with it `UN_SWIZZ_IT`.
+Before making a remote connection you can call `SWIZZ_IT` and after you are done with it `UN_SWIZZ_IT`. For example: before making a web service call using a library of your choise. 
+
+
 If you want to keep receiving information during the whole application just `SWIZZ_IT`.
 
 -------
