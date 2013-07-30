@@ -24,11 +24,11 @@ And import the category where you want to use it:
 Adding NSURLConnection+Swizzled to your project
 ====================================
 
-Just add the two files inside your project (`NSURLConnection+Swizzled.h` and `NSURLConnection+Swizzled.m`).
+*	Just add the two files inside your project (`NSURLConnection+Swizzled.h` and `NSURLConnection+Swizzled.m`).
 
 **Or**
 
-Cocoapods: pod 'NSURLConnection-Swizzled', '~> 1.0'
+*	Cocoapods: pod 'NSURLConnection-Swizzled', '~> 1.0'
 
 -----
 Usage
