@@ -119,11 +119,11 @@ static void swizzInstance(Class class, SEL originalSel, SEL newSel)
     [self swizzSendAsynchronousRequest:request queue:queue completionHandler:handler];
 }
 
-- (id)initWithRequest:(NSURLRequest *)request delegate:(id < NSURLConnectionDelegate >)delegate startImmediately:(BOOL)startImmediately
+- (id)swizzInitWithRequest:(NSURLRequest *)request delegate:(id < NSURLConnectionDelegate >)delegate startImmediately:(BOOL)startImmediately
 {
     [NSURLConnection operateRequest:request];
     // Call the original method
-    return  [self initWithRequest:request delegate:delegate startImmediately:startImmediately];
+    return  [self swizzInitWithRequest:request delegate:delegate startImmediately:startImmediately];
 }
 
 #pragma mark - Public methods
